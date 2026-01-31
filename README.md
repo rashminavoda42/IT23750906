@@ -1,6 +1,4 @@
-# IT23750906_NEW - Swift Translator Tests
-
-This project contains automated tests for a Swift translator using Playwright.
+# IT23750906_NEW 
 
 ## Prerequisites
 
@@ -12,7 +10,7 @@ This project contains automated tests for a Swift translator using Playwright.
 1. Clone or download this repository.
 2. Navigate to the project directory:
    ```
-   cd IT23750906_NEW
+   cd IT23750906
    ```
 3. Install the dependencies:
    ```
