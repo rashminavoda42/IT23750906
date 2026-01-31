@@ -1,6 +1,5 @@
 const { test, expect } = require('@playwright/test');
 
-// Configuration
 const CONFIG = {
   url: 'https://www.swifttranslator.com/',
   timeouts: {
@@ -15,7 +14,6 @@ const CONFIG = {
   }
 };
 
-// Test Data - USING YOUR EXACT TEST CASES FROM EXCEL
 const TEST_DATA = {
   positive: [
     {
@@ -261,7 +259,6 @@ const TEST_DATA = {
   ]
 };
 
-// Helper Functions
 class TranslatorPage {
   constructor(page) {
     this.page = page;
@@ -321,7 +318,6 @@ class TranslatorPage {
   async getOutputTextPreserveSpacing() {
     const output = await this.getOutputField();
     const text = await output.textContent();
-    // Don't trim, preserve all whitespace
     return text;
   }
 
@@ -340,7 +336,6 @@ class TranslatorPage {
   }
 }
 
-// Test Suite
 test.describe('SwiftTranslator - Singlish to Sinhala Conversion Tests', () => {
   let translator;
 
@@ -349,7 +344,6 @@ test.describe('SwiftTranslator - Singlish to Sinhala Conversion Tests', () => {
     await translator.navigateToSite();
   });
 
-  // Positive Functional Tests
   test.describe('Positive Functional Tests', () => {
     for (const testCase of TEST_DATA.positive) {
       test(`${testCase.tcId} - ${testCase.name}`, async () => {
@@ -360,7 +354,6 @@ test.describe('SwiftTranslator - Singlish to Sinhala Conversion Tests', () => {
     }
   });
 
-  // Negative Functional Tests
   test.describe('Negative Functional Tests', () => {
     for (const testCase of TEST_DATA.negative) {
       test(`${testCase.tcId} - ${testCase.name}`, async () => {
@@ -371,9 +364,7 @@ test.describe('SwiftTranslator - Singlish to Sinhala Conversion Tests', () => {
     }
   });
 
-  // UI Tests
   test.describe('UI Functionality Tests', () => {
-    // Test for multiple spaces preservation
     test(`${TEST_DATA.ui[0].tcId} - ${TEST_DATA.ui[0].name}`, async () => {
       const actualOutput = await translator.performTranslationPreserveSpacing(TEST_DATA.ui[0].input);
       expect(actualOutput).toBe(TEST_DATA.ui[0].expected);
